@@ -99,6 +99,10 @@ public class Etudiant {
             for(Float f : listeNotes){
                 somme += f;
             }
+            // On vérifie que s'il n'y a pas de notes alors on retourne 0
+            if(eff == 0){
+                return 0;
+            }
             return somme/eff;
         }
     }
@@ -117,6 +121,10 @@ public class Etudiant {
 
             // On utilise la méthode calculerMoyenneMatiere(matiere) pour calculer la moyenne de l'étudiant pour la matière
             somme += this.calculerMoyenneMatiere(matiere) * matiere.getCoefficient();
+        }
+        // On vérifie que s'il n'y a pas de notes alors on retourne 0
+        if(totalCoeff == 0){
+            return 0;
         }
         // Puis on retourne la moyenne
         return somme/totalCoeff;
