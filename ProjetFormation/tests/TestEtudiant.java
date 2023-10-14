@@ -25,7 +25,7 @@ public class TestEtudiant {
 
 
     @Test
-    void testAjouterNoteMatiere() throws MatiereInexistanteException {
+    public void testAjouterNoteMatiere() throws MatiereInexistanteException {
         etudiant.ajouterNoteMatiere(matiere1, 15.0f);
         List<Float> notesMatiere1 = etudiant.getNotes().get(matiere1);
         assertEquals(1, notesMatiere1.size());
@@ -33,7 +33,7 @@ public class TestEtudiant {
     }
 
     @Test
-    void testAjouterMatiereInexistante() throws MatiereInexistanteException {
+    public void testAjouterMatiereInexistante() throws MatiereInexistanteException {
         assertThrows(MatiereInexistanteException.class, () -> {
             etudiant.ajouterNoteMatiere(new Matiere("MatiereInexistante", 1.0f), 10.0f);
         });
@@ -41,7 +41,7 @@ public class TestEtudiant {
 
 
     @Test
-    void testCalculerMoyenneMatiere() throws MatiereInexistanteException {
+    public void testCalculerMoyenneMatiere() throws MatiereInexistanteException {
         etudiant.ajouterNoteMatiere(matiere1, 15.0f);
         etudiant.ajouterNoteMatiere(matiere1, 18.0f);
         float moyenneMatiere1 = etudiant.calculerMoyenneMatiere(matiere1);
@@ -49,7 +49,7 @@ public class TestEtudiant {
     }
 
     @Test
-    void testCalculerMoyenneGenerale() throws MatiereInexistanteException {
+    public void testCalculerMoyenneGenerale() throws MatiereInexistanteException {
         etudiant.ajouterNoteMatiere(matiere1, 15.0f);
         etudiant.ajouterNoteMatiere(matiere1, 18.0f);
         etudiant.ajouterNoteMatiere(matiere2, 12.0f);
@@ -58,19 +58,19 @@ public class TestEtudiant {
     }
 
     @Test
-    void testAjouterNoteMatiereNoteInvalideInferieure() throws MatiereInexistanteException {
+    public void testAjouterNoteMatiereNoteInvalideInferieure() throws MatiereInexistanteException {
             etudiant.ajouterNoteMatiere(matiere1, -5.0f);
             assertEquals(0.0f, etudiant.getNotes().get(matiere1).get(0));
     }
 
     @Test
-    void testAjouterNoteMatiereNoteInvalideSuperieure() throws MatiereInexistanteException {
+    public void testAjouterNoteMatiereNoteInvalideSuperieure() throws MatiereInexistanteException {
         etudiant.ajouterNoteMatiere(matiere1, 21.0f);
         assertEquals(20.0f, etudiant.getNotes().get(matiere1).get(0));
     }
 
     @Test
-    void testCalculerMoyenneGeneralePasDeNotes() throws MatiereInexistanteException {
+    public void testCalculerMoyenneGeneralePasDeNotes() throws MatiereInexistanteException {
         float moyenneGenerale = etudiant.calculerMoyenneGenerale();
         assertEquals(0.0f, moyenneGenerale, 1);
     }
