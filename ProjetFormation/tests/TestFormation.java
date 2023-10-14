@@ -5,19 +5,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestFormation {
 
     Formation ufr;
+    Matiere philo;
 
     @BeforeEach
     public void setUp() {
         //initialisation de la formation
         Formation ufr = new Formation("ufr");
+
+        //initialisation d'une matière
+        Matiere philo = new Matiere("Philo", 8.0F);
     }
 
     // ajouter matière ok
     @Test
     public void testAjouterMatiere_OK(){
-        //initialisation des objets
-        Matiere philo = new Matiere("Philo", 8.0F);
-
         //vérification
         assertTrue(ufr.ajouterMatiere(philo));
     }
@@ -25,8 +26,7 @@ public class TestFormation {
     //ajouter matière deja existante
     @Test
     public void testAjouterMatiere_PasOK(){
-        //initialisation des objets
-        Matiere philo = new Matiere("Philo", 8.0F);
+        //initialisation
         ufr.ajouterMatiere(philo);
         Matiere nouveauPhilo = new Matiere("Philo", 8.0F);
 
@@ -37,8 +37,7 @@ public class TestFormation {
     //retirer matière ok
     @Test
     public void testSupprimerMatiere_OK(){
-        //initialisation des objets
-        Matiere philo = new Matiere("Philo", 8.0F);
+        //initialisation
         ufr.ajouterMatiere(philo);
 
         //vérification
@@ -56,17 +55,16 @@ public class TestFormation {
     // récupérer coefficient matière
     @Test
     public void testRecupererCoef_OK() throws MatiereInexistanteException {
-        Matiere philo = new Matiere("Philo", 8.0F);
+        //initialisation
         ufr.ajouterMatiere(philo);
 
         //vérification
         assertEquals(ufr.getCoefficient(philo), 8.0F);
     }
 
-    // récupérer coefficient matière inexistante
     @Test
     public void testRecupererCoefMauvaiseMatiere() {
-        Matiere philo = new Matiere("Philo", 8.0F);
+        //initialisation
         ufr.ajouterMatiere(philo);
 
         //vérification
@@ -75,7 +73,6 @@ public class TestFormation {
         });
     }
 
-    // récupérer coefficient matière inexistante
     @Test
     public void testRecupererCoefListeVide(){
         //vérification
