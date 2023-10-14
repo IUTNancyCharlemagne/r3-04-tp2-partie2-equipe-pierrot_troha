@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,9 @@ public class Etudiant {
         this.formation = f;
         // Puis, on part du principe que les Matières que l'étudiant possède dans sa formation comportent toutes des notes.
         // Ainsi, l'ensemble de clés (Matière) des résultats de l'élève correspond au Set<Matiere> dans Formation
-        this.notes.keySet() = this.formation.getMatieres();
+        for (Matiere matiere : this.formation.getMatieres()) {
+            this.notes.put(matiere, new ArrayList<Float>()); // Ajoutez la matière en tant que clé avec une liste vide en valeur
+        }
     }
 
 
@@ -41,7 +44,7 @@ public class Etudiant {
      * @param m Matiere à laquelle on veut ajouter une note
      * @param note qu'on veut ajouter à telle matière
      */
-    public void ajouterNoteMatiere(Matiere m, float note){
+    public void ajouterNoteMatiere(Matiere m, float note) throws MatiereInexistanteException {
         if(note<0) note = 0;
         if(note>20) note = 20;
         // Implique de redéfinir equals et hashcode
@@ -62,7 +65,7 @@ public class Etudiant {
      * @param m Matiere dont on veut la moyenne
      * @return un float correspondant à la moyenne pour la matière donnée
      */
-    public float calculerMoyenneMatiere(Matiere m){
+    public float calculerMoyenneMatiere(Matiere m) throws MatiereInexistanteException {
         if(!this.notes.containsKey(m)){
             throw new MatiereInexistanteException();
         }else{
@@ -80,7 +83,7 @@ public class Etudiant {
      * Permet de calculer la moyenne générale d'un étudiant tout en prenant en compte les coefficients différents.
      * @return la moyenne générale d'un étudiant
      */
-    public float calculerMoyenneGenerale() {
+    public float calculerMoyenneGenerale() throws MatiereInexistanteException  {
         float somme = 0;
         float totalCoeff = 0;
 
