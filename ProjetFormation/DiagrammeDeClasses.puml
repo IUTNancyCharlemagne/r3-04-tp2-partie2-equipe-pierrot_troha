@@ -1,9 +1,57 @@
 @startuml
+class Identite {
+    - nip: String
+    - nom: String
+    - prenom: String
 
-class Identite{
+    + Identite(nip: String, n: String, p: String)
+}
 
+class Etudiant{
+    -- faire la liaison avec Identite
+    -- faire la liaison avec Formation
+    - notes : Map<Matiere, ArrayList<Float>>
+    + Etudiant(id: Identite, f: Formation)
+    + getIdentite(): Identite
+    + getFormation(): Formation
+    + getNotes(): Map<Matiere, List<Float>>
+    + ajouterNoteMatiere(m: Matiere, note: float): void
+    + calculerMoyenneMatiere(m: Matiere): float
+    + calculerMoyenneGenerale(): float
+}
+
+class Formation {
+    - identifiant: String
+
+    + Formation(id: String)
+    + ajouterMatiere(matiere: Matiere): boolean
+    + supprimerMatiere(matiere: Matiere): boolean
+    + getCoefficient(matiere: Matiere): float
+    + getIdentifiant(): String
+    + setIdentifiant(identifiant: String): void
+    + getMatieres(): Set<Matiere>
+    + setMatieres(matieres: Set<Matiere>): void
+}
+
+class Matiere {
+    - nom: String
+    - coefficient: float
+
+    + Matiere(n: String, coef: float)
+    + getNom(): String
+    + setNom(nom: String): void
+    + getCoefficient(): float
+    + setCoefficient(coefficient: float): void
+}
+
+class Groupe{
+    Groupe()
 }
 
 
-
+Identite"1" <-- "1"Etudiant : identite
+Formation"1" <-- "1"Etudiant : formation
+Matiere"0.*" <--"1" Formation : Set<Matiere> matieres
+Etudiant"0.*" <-- "1" Groupe : ArrayList<Etudiant> etudiants
+Formation"1" <-- "1" Groupe : formation
 @enduml
