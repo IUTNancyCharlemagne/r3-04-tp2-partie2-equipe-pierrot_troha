@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Identite {
 
     /**
@@ -18,4 +20,21 @@ public class Identite {
         this.prenom = p;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Identite identite)) return false;
+
+        if (!Objects.equals(nip, identite.nip)) return false;
+        if (!Objects.equals(nom, identite.nom)) return false;
+        return Objects.equals(prenom, identite.prenom);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nip != null ? nip.hashCode() : 0;
+        result = 31 * result + (nom != null ? nom.hashCode() : 0);
+        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
+        return result;
+    }
 }

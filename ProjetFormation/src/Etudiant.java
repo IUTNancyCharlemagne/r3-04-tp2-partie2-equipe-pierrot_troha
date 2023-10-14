@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Etudiant {
     /**
@@ -128,5 +125,23 @@ public class Etudiant {
         }
         // Puis on retourne la moyenne
         return somme/totalCoeff;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Etudiant etudiant)) return false;
+
+        if (!Objects.equals(identite, etudiant.identite)) return false;
+        if (!Objects.equals(formation, etudiant.formation)) return false;
+        return Objects.equals(notes, etudiant.notes);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = identite != null ? identite.hashCode() : 0;
+        result = 31 * result + (formation != null ? formation.hashCode() : 0);
+        result = 31 * result + (notes != null ? notes.hashCode() : 0);
+        return result;
     }
 }
