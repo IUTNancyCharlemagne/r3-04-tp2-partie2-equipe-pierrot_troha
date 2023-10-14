@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,11 +31,35 @@ public class Etudiant {
         this.formation = f;
         // Puis, on part du principe que les Matières que l'étudiant possède dans sa formation comportent toutes des notes.
         // Ainsi, l'ensemble de clés (Matière) des résultats de l'élève correspond au Set<Matiere> dans Formation
+        this.notes = new HashMap<Matiere, List<Float>>();
         for (Matiere matiere : this.formation.getMatieres()) {
             this.notes.put(matiere, new ArrayList<Float>()); // Ajoutez la matière en tant que clé avec une liste vide en valeur
         }
     }
 
+    /**
+     *
+     * @return l'identité de l'étudiant
+     */
+    public Identite getIdentite() {
+        return identite;
+    }
+
+    /**
+     *
+     * @return la formation de l'étudiant
+     */
+    public Formation getFormation() {
+        return formation;
+    }
+
+    /**
+     *
+     * @return notes de l'étudiant
+     */
+    public Map<Matiere, List<Float>> getNotes() {
+        return notes;
+    }
 
     /**
      * Permet d'ajouter une note à une matière donnée.
@@ -84,8 +108,8 @@ public class Etudiant {
      * @return la moyenne générale d'un étudiant
      */
     public float calculerMoyenneGenerale() throws MatiereInexistanteException  {
-        float somme = 0;
-        float totalCoeff = 0;
+        float somme = 0f;
+        float totalCoeff = 0f;
 
         for(Matiere matiere : this.notes.keySet()){
             // On récupère le coefficient de la matiere pour l'ajouter au coeff total

@@ -1,7 +1,8 @@
-import java.util.*;
-
+import java.util.Objects;
+import java.util.Set;
+import java.util.HashSet;
 /**
- * Classe qui représente des formations avec un identifiant et une liste de matières
+ * Classe qui représente une formation avec un identifiant et une liste de matières
  */
 public class Formation {
 
@@ -94,5 +95,18 @@ public class Formation {
      */
     public void setMatieres(Set<Matiere> matieres) {
         this.matieres = matieres;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Formation formation = (Formation) o;
+        return Objects.equals(identifiant, formation.identifiant) && Objects.equals(matieres, formation.matieres);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifiant, matieres);
     }
 }
