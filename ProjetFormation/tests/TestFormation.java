@@ -1,14 +1,21 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFormation {
 
+    Formation ufr;
+
+    @BeforeEach
+    public void setUp() {
+        //initialisation de la formation
+        Formation ufr = new Formation("ufr");
+    }
 
     // ajouter matière ok
     @Test
     public void testAjouterMatiere_OK(){
         //initialisation des objets
-        Formation ufr = new Formation("ufr");
         Matiere philo = new Matiere("Philo", 8.0F);
 
         //vérification
@@ -19,7 +26,6 @@ public class TestFormation {
     @Test
     public void testAjouterMatiere_PasOK(){
         //initialisation des objets
-        Formation ufr = new Formation("ufr");
         Matiere philo = new Matiere("Philo", 8.0F);
         ufr.ajouterMatiere(philo);
         Matiere nouveauPhilo = new Matiere("Philo", 8.0F);
@@ -32,7 +38,6 @@ public class TestFormation {
     @Test
     public void testSupprimerMatiere_OK(){
         //initialisation des objets
-        Formation ufr = new Formation("ufr");
         Matiere philo = new Matiere("Philo", 8.0F);
         ufr.ajouterMatiere(philo);
 
@@ -43,9 +48,6 @@ public class TestFormation {
     //retirer matière mais liste de matière vide
     @Test
     public void testSupprimerMatiere_listeVide(){
-        //initialisation des objets
-        Formation ufr = new Formation("ufr");
-
         //vérification
         assertFalse(ufr.supprimerMatiere(new Matiere("Philo", 8.0F)));
     }
@@ -54,8 +56,6 @@ public class TestFormation {
     // récupérer coefficient matière
     @Test
     public void testRecupererCoef_OK() throws MatiereInexistanteException {
-        //initialisation des objets
-        Formation ufr = new Formation("ufr");
         Matiere philo = new Matiere("Philo", 8.0F);
         ufr.ajouterMatiere(philo);
 
@@ -66,8 +66,6 @@ public class TestFormation {
     // récupérer coefficient matière inexistante
     @Test
     public void testRecupererCoefMauvaiseMatiere() {
-        //initialisation des objets
-        Formation ufr = new Formation("ufr");
         Matiere philo = new Matiere("Philo", 8.0F);
         ufr.ajouterMatiere(philo);
 
@@ -80,9 +78,6 @@ public class TestFormation {
     // récupérer coefficient matière inexistante
     @Test
     public void testRecupererCoefListeVide(){
-        //initialisation des objets
-        Formation ufr = new Formation("ufr");
-
         //vérification
         assertThrows(MatiereInexistanteException.class, () -> {
             ufr.getCoefficient(new Matiere("Maths", 16.0F));
