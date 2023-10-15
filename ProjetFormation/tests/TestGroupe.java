@@ -65,7 +65,7 @@ public class TestGroupe {
         //vérification
         assertEquals("Duck-Donald : ufr\nHibulaire-Pat : ufr\nMouse-Mickey : ufr\n", groupe.toString());
     }
-    
+
     @Test
     public void trierListeAntiAlpha(){
         //initialisation
