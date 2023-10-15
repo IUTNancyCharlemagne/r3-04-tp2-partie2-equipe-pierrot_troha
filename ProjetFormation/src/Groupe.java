@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -77,6 +79,33 @@ public class Groupe {
      */
     public List<Etudiant> getEtudiants() {
         return this.etudiants;
+    }
+
+    /**
+     * Méthode qui permet de trier une liste d'étudiants dans l'ordre alphabétique
+     */
+    public void triAlpha(){
+        Collections.sort(this.etudiants);
+    }
+
+    /**
+     * Méthode qui permet de trier une liste dans l'ordre antialphabétique
+     */
+    public void triAntiAlpha() {
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                return etudiant2.getIdentite().getNom().compareTo(etudiant1.getIdentite().getNom());
+            }
+        });
+    }
+
+    public String toString() {
+        String res = "";
+        for (Etudiant etu : this.etudiants) {
+            res += (etu.getIdentite().getNom() + "-" + etu.getIdentite().getPrenom() + " : " + this.formation.getIdentifiant() + "\n");
+        }
+        return res;
     }
 
 }

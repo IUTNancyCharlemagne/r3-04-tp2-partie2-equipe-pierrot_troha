@@ -20,7 +20,6 @@ public class Identite {
         this.prenom = p;
     }
 
-<<<<<<< HEAD
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,8 +37,31 @@ public class Identite {
         result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
         return result;
     }
-=======
 
+    /**
+     * Getter de Numéro d’Identification Personnel
+     *
+     * @return le Numéro d’Identification Personnel
+     */
+    public String getNip() {
+        return this.nip;
+    }
 
->>>>>>> b3bbbd2f6932b122085ec986fd9063a8becc79d6
+    /**
+     * Getter de Nom
+     *
+     * @return le Nom de la personne
+     */
+    public String getNom() {
+        return this.nom;
+    }
+
+    /**
+     * Getter de Prenom
+     *
+     * @return le Prenom de la personne
+     */
+    public String getPrenom() {
+        return this.prenom;
+    }
 }
