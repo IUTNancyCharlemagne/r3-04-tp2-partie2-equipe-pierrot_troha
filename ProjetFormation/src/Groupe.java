@@ -155,6 +155,7 @@ public class Groupe {
     /**
      * Méthode qui redéfinit un comparateur d'Etudiant afin de les comparer dans l'ordre décroissant selon
      * leur moyenne générale (Ex : Paul 19 sera 1er et Marie 14 sera 2ème)
+     * S'ils ont la même moyenne générale, alors il sont trié par ordre alphabétique
      */
     public void triParMerite() throws MatiereInexistanteException{
         Collections.sort(etudiants, new Comparator<Etudiant>(){
@@ -168,7 +169,7 @@ public class Groupe {
                     }else if(moyenne_1 <moyenne_2){
                         return 1;
                     }else{
-                        return 0;
+                        return etu1.getIdentite().getNom().compareTo(etu2.getIdentite().getNom());
                     }
                 } catch (MatiereInexistanteException e) {
                     throw new RuntimeException(e);

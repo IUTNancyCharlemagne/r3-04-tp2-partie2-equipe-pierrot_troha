@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestGroupe {
 
     Groupe groupe;
-    Etudiant mickeyMouse, donaldDuck, minnieMouse, patHibulaire;
+    Etudiant mickeyMouse, donaldDuck, minnieMouse, patHibulaire, ririDuck;
     Matiere matiere1, matiere2, matiere3;
 
     Formation formation;
@@ -29,6 +29,7 @@ public class TestGroupe {
         donaldDuck = new Etudiant(new Identite("etu@2", "Duck", "Donald"), groupe.getFormation());
         minnieMouse = new Etudiant(new Identite("etu@3", "Mouse", "Minnie"), groupe.getFormation());
         patHibulaire = new Etudiant(new Identite("etu@4", "Hibulaire", "Pat"), groupe.getFormation());
+        ririDuck = new Etudiant(new Identite("etu@5", "Duck", "Riri"), groupe.getFormation());
         try{
             mickeyMouse.ajouterNoteMatiere(matiere1, 15.0f);
             mickeyMouse.ajouterNoteMatiere(matiere2, 12.0f);
@@ -45,6 +46,10 @@ public class TestGroupe {
             patHibulaire.ajouterNoteMatiere(matiere1, 19.0f);
             patHibulaire.ajouterNoteMatiere(matiere2, 10.0f);
             patHibulaire.ajouterNoteMatiere(matiere3, 10.0f);
+
+            ririDuck.ajouterNoteMatiere(matiere1, 19.0f);
+            ririDuck.ajouterNoteMatiere(matiere2, 10.0f);
+            ririDuck.ajouterNoteMatiere(matiere3, 10.0f);
         }catch(MatiereInexistanteException e){
             e.printStackTrace();
         }
@@ -134,5 +139,22 @@ public class TestGroupe {
         groupe.triParMerite();
 
         assertEquals("Mouse-Minnie : ufr\nMouse-Mickey : ufr\nHibulaire-Pat : ufr\nDuck-Donald : ufr\n", groupe.toString());
+    }
+
+    @Test
+    public void trierListeParMeriteEtMemeMoyenneOk() throws MatiereInexistanteException{
+        /*
+         * Moyenne de chaque élève :
+         *   Pat    : 14,5
+         *   Riri : 14,5
+         */
+        //initialisation
+        groupe.ajouterEtudiant(patHibulaire);
+        groupe.ajouterEtudiant(ririDuck);
+
+        //test riri doit être avant pat car cela tri par ordre alphabéitque
+        groupe.triParMerite();
+
+        assertEquals("Duck-Riri : ufr\nHibulaire-Pat : ufr\n", groupe.toString());
     }
 }
