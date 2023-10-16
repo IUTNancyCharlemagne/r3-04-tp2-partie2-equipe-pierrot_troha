@@ -8,12 +8,23 @@ public class TestGroupe {
     Etudiant mickeyMouse, donaldDuck, minnieMouse, patHibulaire;
     Matiere matiere1, matiere2, matiere3;
 
+    Formation formation;
+
     @BeforeEach
     public void setUp() {
-        groupe = new Groupe(new Formation("ufr"));
+        formation = new Formation("ufr");
+
+        groupe = new Groupe(formation);
+
+
         matiere1 = new Matiere("Mathématiques", 2.0f);
         matiere2 = new Matiere("Physique", 3.0f);
         matiere3 = new Matiere("SVT", 1.0f);
+
+        formation.ajouterMatiere(matiere1);
+        formation.ajouterMatiere(matiere2);
+        formation.ajouterMatiere(matiere3);
+
         mickeyMouse = new Etudiant(new Identite("etu@1", "Mouse", "Mickey"), groupe.getFormation());
         donaldDuck = new Etudiant(new Identite("etu@2", "Duck", "Donald"), groupe.getFormation());
         minnieMouse = new Etudiant(new Identite("etu@3", "Mouse", "Minnie"), groupe.getFormation());
@@ -105,7 +116,7 @@ public class TestGroupe {
     }
 
     @Test
-    public void trierListeParMerite_Ok(){
+    public void trierListeParMerite_Ok() throws MatiereInexistanteException{
         /*
         * Moyenne de chaque élève :
         *   Minnie : 17,17
@@ -113,6 +124,11 @@ public class TestGroupe {
         *   Pat    : 14,5
         *   Donald : 7,33
         */
+        //initialisation
+        groupe.ajouterEtudiant(mickeyMouse);
+        groupe.ajouterEtudiant(donaldDuck);
+        groupe.ajouterEtudiant(patHibulaire);
+        groupe.ajouterEtudiant(minnieMouse);
 
         //test
         groupe.triParMerite();
