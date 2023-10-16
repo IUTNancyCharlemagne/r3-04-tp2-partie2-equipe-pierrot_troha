@@ -32,7 +32,7 @@ Grâce à la méthode [Collection.sort()](https://docs.oracle.com/javase/8/docs/
 ## Diagramme de classes 
 Le diagramme de classes est disponible en plantuml [ici](ProjetFormation/DiagrammeDeClasses.puml) afin d'en consulter le code.  
 Voici directement une image du diagramme :  
-![Diagramme PlantUML]()
+![Diagramme PlantUML](ProjetFormation/DiagrammeDeClasses.png)  
 
 
 
