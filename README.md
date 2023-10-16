@@ -4,7 +4,7 @@
 - **PIERROT** Nathan 
 - **TROHA** Stanislas 
 
-## Dépendances :
+## [Dépendances](r3-04-tp2-partie2-equipe-pierrot_troha.iml) :
 **Concernant les versions utilisées dans ce projet :**  
 - Java : [*version 17*](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - JUnit : [*version 5.8.1*](https://junit.org/junit5/docs/5.8.1/api/index.html)
