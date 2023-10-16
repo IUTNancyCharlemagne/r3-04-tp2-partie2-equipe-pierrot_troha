@@ -34,7 +34,8 @@ Le diagramme de classes est disponible en plantuml [ici](ProjetFormation/Diagram
 Voici directement une image du diagramme :  
 ![Diagramme PlantUML](ProjetFormation/DiagrammeDeClasses.png)  
 
-
+### Améliorations possibles :  
+Nous avons pensé qu'il serait utile de modifier les fonctions de triAlpha et triAntiAlpha (classe [Groupe](ProjetFormation/src/Groupe.java) au cas où deux étudiants possèdent le même nom et prénom. Ils seraient ainsi triés en fonction de leur NIP qui lui, est forcément unique. (ex : etu@2) 
 
 
 
