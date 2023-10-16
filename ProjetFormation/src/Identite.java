@@ -20,7 +20,6 @@ public class Identite {
         this.prenom = p;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,6 +38,31 @@ public class Identite {
         return result;
     }
 
+    /**
+     * Getter de Numéro d’Identification Personnel
+     *
+     * @return le Numéro d’Identification Personnel
+     */
+    public String getNip() {
+        return this.nip;
+    }
 
+    /**
+     * Getter de Nom
+     *
+     * @return le Nom de la personne
+     */
+    public String getNom() {
+        return this.nom;
+    }
+
+    /**
+     * Getter de Prenom
+     *
+     * @return le Prenom de la personne
+     */
+    public String getPrenom() {
+        return this.prenom;
+    }
 
 }
