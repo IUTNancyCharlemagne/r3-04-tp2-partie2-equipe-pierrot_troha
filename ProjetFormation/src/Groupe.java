@@ -159,4 +159,9 @@ public class Groupe {
         }
     }
 
+
+    public void triParMerite(){
+        throw new Error("à faire");
+    }
+
 }
