@@ -12,7 +12,11 @@
 *Les dépendances sont retrouvables dans ce fichier .iml :* [config.xml](r3-04-tp2-partie2-equipe-pierrot_troha.iml)
 
 --- ---
-
+*Les différentes branches contenant les différentes versions de l'application ont été conservées et sont accessibles depuis ce projet git*
+* [fct_moyennes](https://github.com/IUTNancyCharlemagne/r3-04-tp2-partie2-equipe-pierrot_troha/tree/fct_moyennes)
+* [fct_tris](https://github.com/IUTNancyCharlemagne/r3-04-tp2-partie2-equipe-pierrot_troha/tree/fct_tris)
+* [fct_merite](https://github.com/IUTNancyCharlemagne/r3-04-tp2-partie2-equipe-pierrot_troha/tree/fct_merite)
+--- ---
 ### Choix des collections
 *Concernant les différentes Collections utilisées par rapport à chaque question :*  
 
