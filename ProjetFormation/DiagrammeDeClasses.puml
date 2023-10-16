@@ -3,40 +3,39 @@ class Identite {
     - nip: String
     - nom: String
     - prenom: String
-
     + Identite(nip: String, n: String, p: String)
+    + getNip(): String
+    + getNom(): String
+    + getPrenom(): String
 }
 
 class Etudiant{
-    -- faire la liaison avec Identite
-    -- faire la liaison avec Formation
-    - notes : Map<Matiere, ArrayList<Float>>
+    - notes: Map<Matiere, List<Float>
     + Etudiant(id: Identite, f: Formation)
     + getIdentite(): Identite
     + getFormation(): Formation
-    + getNotes(): Map<Matiere, List<Float>>
+    + getNotes(): Map<Matiere, List<Float>
     + ajouterNoteMatiere(m: Matiere, note: float): void
     + calculerMoyenneMatiere(m: Matiere): float
     + calculerMoyenneGenerale(): float
+    + equals(o: Object): boolean
 }
 
 class Formation {
-    - identifiant: String
-
-    + Formation(id: String)
-    + ajouterMatiere(matiere: Matiere): boolean
-    + supprimerMatiere(matiere: Matiere): boolean
-    + getCoefficient(matiere: Matiere): float
-    + getIdentifiant(): String
-    + setIdentifiant(identifiant: String): void
-    + getMatieres(): Set<Matiere>
-    + setMatieres(matieres: Set<Matiere>): void
+  - identifiant: String
+  + Formation(id: String)
+  + ajouterMatiere(matiere: Matiere): boolean
+  + supprimerMatiere(matiere: Matiere): boolean
+  + getCoefficient(matiere: Matiere): float
+  + getIdentifiant(): String
+  + setIdentifiant(identifiant: String): void
+  + getMatieres(): Set<Matiere>
+  + setMatieres(matieres: Set<Matiere>): void
 }
 
 class Matiere {
     - nom: String
     - coefficient: float
-
     + Matiere(n: String, coef: float)
     + getNom(): String
     + setNom(nom: String): void
@@ -44,8 +43,18 @@ class Matiere {
     + setCoefficient(coefficient: float): void
 }
 
-class Groupe{
-    Groupe()
+class Groupe {
+  + Groupe(f: Formation)
+  + Groupe(f: Formation, etu: ArrayList<Etudiant>)
+  + ajouterEtudiant(etu: Etudiant): boolean
+  + supprimerEtudiant(etu: Etudiant): boolean
+  + getFormation(): Formation
+  + getEtudiants(): List<Etudiant>
+  + triAlpha(): void
+  + triAntiAlpha(): void
+  + calculerMoyenneParMatiere(m: Matiere): float
+  + calculerMoyenneGenerale():
+  + toString(): String
 }
 
 
