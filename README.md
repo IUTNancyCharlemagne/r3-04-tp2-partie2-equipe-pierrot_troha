@@ -27,7 +27,7 @@ Nous précisons aussi que nous avons choisi de représenter une matiere sous la 
 
 __**3) Collection d'etudiants dans [Groupe](ProjetFormation/src/Groupe.java)**__    
 Pour la collection d'étudiants dans la classe [Groupe](ProjetFormation/src/Groupe.java) nous avons choisi de la représenter sous la forme d'une [*ArrayList<Float>*](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html) pour en faciliter le parcours, en particulier pour les dernières parties concernant le tri.  
-Grâce à la méthode [Collection.sort()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#sort-java.util.List-java.util.Comparator-) nous pouvons faire les tris alphabétique, anti-alphabétique et par mérite.  
+Grâce à la méthode [Collections.sort()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#sort-java.util.List-java.util.Comparator-) nous pouvons faire les tris alphabétique, anti-alphabétique et par mérite.  
 --- ---
 ## Diagramme de classes 
 Le diagramme de classes est disponible en plantuml [ici](ProjetFormation/DiagrammeDeClasses.puml) afin d'en consulter le code.  
