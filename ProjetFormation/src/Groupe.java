@@ -108,4 +108,55 @@ public class Groupe {
         return res;
     }
 
+
+    /**
+     * Permet d'accéder à la moyenne générale du groupe dans une matière donnée
+     *
+     * @param m matiere dont on veut connaître la moyenne du groupe
+     * @return float correspondant à la moyenne du groupe
+     * @throws MatiereInexistanteException
+     */
+    public float calculerMoyenneParMatiere(Matiere m) throws MatiereInexistanteException{
+        if(!this.formation.getMatieres().contains(m)){
+            throw new MatiereInexistanteException();
+        }else{
+            float somme = 0f;
+            float effTotal = 0f;
+            for(Etudiant etu : this.etudiants){
+                // On vérifie que l'étudiant a des notes dans la matière (ex : absent au contrôle)
+                if(!(etu.getNotes().get(m).size() == 0)){
+                    somme += etu.calculerMoyenneMatiere(m);
+                    effTotal += 1;
+                }
+            }
+            // Si aucun n'étudiant n'a de notes dans la matière donnée
+            if(effTotal == 0){
+                return 0f;
+            }else{
+                return somme/effTotal;
+            }
+
+        }
+    }
+
+    /**
+     * Permet d'accéder à la moyenne générale du groupe dans toutes matières confondues
+     *
+     * @return float correspondant à la moyenne générale du groupe
+     */
+    public float calculerMoyenneGenerale() throws MatiereInexistanteException{
+        float somme = 0f;
+        float effTotal = 0f;
+
+        for(Matiere m : this.formation.getMatieres()){
+            somme += this.calculerMoyenneParMatiere(m) * m.getCoefficient();
+            effTotal += m.getCoefficient();
+        }
+        if(effTotal == 0){
+            return 0f;
+        }else{
+            return somme/effTotal;
+        }
+    }
+
 }
