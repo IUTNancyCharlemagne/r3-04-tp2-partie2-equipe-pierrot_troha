@@ -81,33 +81,6 @@ public class Groupe {
         return this.etudiants;
     }
 
-    /**
-     * Méthode qui permet de trier une liste d'étudiants dans l'ordre alphabétique
-     */
-    public void triAlpha(){
-        Collections.sort(this.etudiants);
-    }
-
-    /**
-     * Méthode qui permet de trier une liste dans l'ordre antialphabétique
-     */
-    public void triAntiAlpha() {
-        Collections.sort(etudiants, new Comparator<Etudiant>() {
-            @Override
-            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
-                return etudiant2.getIdentite().getNom().compareTo(etudiant1.getIdentite().getNom());
-            }
-        });
-    }
-
-    public String toString() {
-        String res = "";
-        for (Etudiant etu : this.etudiants) {
-            res += (etu.getIdentite().getNom() + "-" + etu.getIdentite().getPrenom() + " : " + this.formation.getIdentifiant() + "\n");
-        }
-        return res;
-    }
-
 
     /**
      * Permet d'accéder à la moyenne générale du groupe dans une matière donnée
@@ -158,5 +131,65 @@ public class Groupe {
             return somme/effTotal;
         }
     }
+
+    /**
+     * Méthode qui permet de trier une liste d'étudiants dans l'ordre alphabétique
+     */
+    public void triAlpha(){
+        Collections.sort(this.etudiants);
+    }
+
+    /**
+     * Méthode qui permet de trier une liste dans l'ordre antialphabétique
+     */
+    public void triAntiAlpha() {
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                return etudiant2.getIdentite().getNom().compareTo(etudiant1.getIdentite().getNom());
+            }
+        });
+    }
+
+
+    /**
+     * Méthode qui redéfinit un comparateur d'Etudiant afin de les comparer dans l'ordre décroissant selon
+     * leur moyenne générale (Ex : Paul 19 sera 1er et Marie 14 sera 2ème)
+     * S'ils ont la même moyenne générale, alors il sont trié par ordre alphabétique
+     */
+    public void triParMerite() throws MatiereInexistanteException{
+        Collections.sort(etudiants, new Comparator<Etudiant>(){
+            @Override
+            public int compare(Etudiant etu1, Etudiant etu2) {
+                try {
+                    float moyenne_1 = etu1.calculerMoyenneGenerale();
+                    float moyenne_2 = etu2.calculerMoyenneGenerale();
+                    if(moyenne_1 > moyenne_2){
+                        return -1;
+                    }else if(moyenne_1 <moyenne_2){
+                        return 1;
+                    }else{
+                        return etu1.getIdentite().getNom().compareTo(etu2.getIdentite().getNom());
+                    }
+                } catch (MatiereInexistanteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    /**
+     * Renvoie en String la liste des Etudiants
+     * @return la liste de tous les élèves avec leur nom leur prénom et leur NIP (+ formation)
+     */
+    public String toString() {
+        String res = "";
+        for (Etudiant etu : this.etudiants) {
+            res += (etu.getIdentite().getNom() + "-" + etu.getIdentite().getPrenom() + " : " + this.formation.getIdentifiant() + "\n");
+        }
+        return res;
+    }
+
+
 
 }

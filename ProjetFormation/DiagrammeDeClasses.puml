@@ -50,10 +50,11 @@ class Groupe {
   + supprimerEtudiant(etu: Etudiant): boolean
   + getFormation(): Formation
   + getEtudiants(): List<Etudiant>
+  + calculerMoyenneParMatiere(m: Matiere): float
+  + calculerMoyenneGenerale(): float
   + triAlpha(): void
   + triAntiAlpha(): void
-  + calculerMoyenneParMatiere(m: Matiere): float
-  + calculerMoyenneGenerale():
+  + triParMerite(): void
   + toString(): String
 }
 
