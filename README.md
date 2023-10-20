@@ -21,7 +21,7 @@
 *Concernant les différentes Collections utilisées par rapport à chaque question :*  
 
 **1) Résultats d'un [étudiant](ProjetFormation/src/Etudiant.java):**    
-Nous avons décidé de représenter la collection des résultats d'un étudiant sous la forme d'une [*HashMap*](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html). Ainsi, pour chaque matière (clé) on peut accéder à la collection des notes de l'étudiant, que nous avons choisi de représenter sous la forme d'une [*ArrayList<Float>*](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html).  
+Nous avons décidé de représenter la collection des résultats d'un étudiant sous la forme d'une [*HashMap*](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html). Ainsi, pour chaque matière (clé) on peut accéder à la collection des notes de l'étudiant, que nous avons choisi de représenter sous la forme d'une [*ArrayList< Float >*](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html).  
 
 **2) Collection des matières dans [Formation](ProjetFormation/src/Formation.java) :**    
 Concernant la collection de matières dans la classe [Formation](ProjetFormation/src/Formation.java) nous avons choisi de la représenter sous la forme d'un ensemble [HashSet](https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html) pour assurer l'unicité d'une matière dans l'ensemble.
